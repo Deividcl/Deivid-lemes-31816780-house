@@ -6,7 +6,8 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
   <link rel="stylesheet" type="text/css" href="css/table.css">
-  <link rel="shortcut icon" href="IMG/favicon.png"/>
+  <link rel="stylesheet" type="java/js" href="js/java.js">
+  <link rel="shortcut icon" href="img/favicon.ico"/>
 </head>
 <body id="fundo">
 	<nav class="navbar navbar-expand-lg">
@@ -36,128 +37,70 @@
       </form>
     </div>
 </nav>
+
 <div id="interface">
-<div id="tabela">
-<table border="1">
-  <tr style="background-color: #3B8686">
-    <td class="tit">Eletrodomesticos</td>
-    <td class="tit">Watts</td>
-    <td class="tit">Dias Estimados Uso/Mês</td>
+<div>
+<table id="tabela">
+  <tr>
+    <th class="tit">Eletrodomesticos</th>
+    <th class="tit">Watts</th>
+    <th class="tit">Dias Estimados</th>
     </tr>
   <tr>
-  <td>Aparelho de Som</td><td>80</td>
-  <td>20</td>
+  <td class="name">* Aparelho de Som</td><td>80</td><td>20</td>
   </tr>
   <tr>
-  <td>Aquecedor de Ambiente</td><td>1.550</td>
-  <td>15</td> 
+  <td class="name">* Aquecedor de Ambiente</td><td>1.550</td><td>15</td> 
   </tr>
   <tr>
-  <td>Aspirador de Pó</td><td>1.000</td>
-  <td>30</td> 
+  <td class="name">* Aspirador de Pó</td><td>1.000</td><td>30</td> 
   </tr>
   <tr>
-  <td>Aquecedor central de água</td><td>5.000</td> <td>5</td>
+  <td class="name">* Batedeira</td><td>450</td><td> </td>
   </tr>
   <tr>
-  <td>Balcão frigorífico</td><td>900</td> 
-  <td>5</td>
+  <td class="name">* Cafeteira</td><td>600</td><td>30</td>
   </tr>
   <tr>
-  <td>Batedeira</td><td>450</td> 
+  <td class="name">* Computador</td><td>350</td><td>30</td>
   </tr>
   <tr>
-  <td>Cafeteira</td><td>600</td> 
-  <td>30</td>
+  <td class="name">* Condicionador de Ar</td><td>1.450</td><td>30</td>
   </tr>
   <tr>
-  <td>Computador</td><td>350</td> 
-  <td>30</td>
+  <td class="name">* Chuveiro Elétrico</td><td>3.500</td><td>30</td>
   </tr>
   <tr>
-  <td>Condicionador de Ar</td><td>1.450</td> 
-  <td>30</td>
+  <td class="name">* Ferro elétrico Comum</td><td>750</td><td>10</td>
   </tr>
   <tr>
-  <td>Chuveiro Elétrico</td><td>3.500</td> 
-  <td>30</td>
+  <td class="name">* Forno de microondas</td><td>1.300</td><td>30</td>
   </tr>
   <tr>
-  <td>Exaustor de Parede</td><td>110</td> 
-  <td>30</td>
+  <td class="name">* Impressora jato Tinta</td><td>50</td><td> </td>
   </tr>
   <tr>
-  <td>Enceradeira</td><td>350</td> 
-  <td>6</td>
+  <td class="name">* Impressora laser</td><td>400</td><td> </td>
   </tr>
   <tr>
-  <td>Ferro elétrico Comum</td><td>750</td> 
-  <td>10</td>
+  <td class="name">* Liquidificador</td><td>400</td><td> </td>
   </tr>
   <tr>
-  <td>Ferro elétrico Regulável</td><td>1.500</td> 
-  <td>12</td>
+  <td class="name">* Máquina de Lavar Louça</td><td>2.700</td><td> </td>
   </tr>
   <tr>
-  <td>Forno elétrico</td><td>5.000</td> 
-  <td>20</td>
+  <td class="name">* Máquina de Lavar Roupa</td><td>1.500</td><td> </td>
   </tr>
   <tr>
-  <td>Forno de microondas</td><td>1.300</td> 
-  <td>30</td>
+  <td class="name">* Refrigerador Duplex ou freezer</td><td>350</td><td> </td>
   </tr>
   <tr>
-  <td>Freezer acima de 200 litros</td><td>150</td>
-  <td>30</td>
+  <td class="name">* Secador de Cabelo</td><td>1.300</td><td> </td>
   </tr>
-  <tr>
-  <td>Freezer até 200 litros</td><td>120</td> 
-  <td>30</td>
-  </tr>
-  <tr>
-  <td>Freezer balcão</td><td>140</td> 
-  </tr>
-  <tr>
-  <td>Fritadeira</td><td>1.200</td> 
-  </tr>
-  <tr>
-  <td>Gril</td><td>1.200</td> 
-  </tr>
-  <tr>
-  <td>Impressora jato Tinta</td><td>50</td> 
-  </tr>
-  <tr>
-  <td>Impressora laser</td><td>400</td> 
-  </tr>
-  <tr>
-  <td>Liquidificador</td><td>400</td> 
-  </tr>
-  <tr>
-  <td>Máquina de Lavar Louça</td><td>2.700</td> 
-  </tr>
-  <tr>
-  <td>Máquina de Lavar Roupa</td><td>1.500</td> 
-  </tr>
-  <tr>
-  <td>Refrigerador Duplex ou freezer</td><td>350</td> 
-  </tr>
-  <tr>
-  <td>Secador de Cabelo</td><td>1.300</td> 
-  </tr>
-  <tr>
-  <td>Secador de Roupa</td><td>3.500</td> 
-  </tr>
-  <tr>
-  <td>Televisor</td><td>200</td> 
-  </tr>
-  <tr>
-  <td>Torneira Elétrica</td><td>3.500</td> 
-  </tr>
-  <tr>
-  <td>Ventilador</td><td>100</td> 
-  </tr>
-  <tr>
   </table>
+</div>
+<div id="parag">
+  <h6>* Estas e muitas outras informações de consumo, você encontra no nosso app.</h6>
 </div>
 <div id="break">
   </div>
