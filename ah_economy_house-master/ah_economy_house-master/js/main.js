@@ -1,5 +1,4 @@
 var total = 0;
-var tarifacao = 0;
 
 //constantes
 const selecione = 'Selecione';
@@ -7,7 +6,7 @@ const operacaoAdicionar = "adicionar";
 const operacaoRemover = "remover";
 const operacaoVerificar = "verificar";
 
-//campos usados no form
+//pegando campos
 var campoNomeItem = document.getElementById("Itens");
 var campoQuantidade = document.getElementById("quantidade");
 var campoPotencia = document.getElementById("potencia");
@@ -17,13 +16,13 @@ var campoSelect = document.getElementById('Itens');
 
 
 
-//usando o "data" do JSON (que estão os dados de codigo, item e potencia) e instanciando na variavel itens
+//pegando itens do json e jogando na variavel itens
 var itens = JSON.parse(data);
 
 //array de itens adicionados pelo usuario
 var itensAdicionados = [];
 
-//carrega os dados do body na inicialização do html(carrega os itens da var itens no campo do select)
+//função para inicializar o select com os Itens
 function inicalizarSelectItens() {
 
     var opcao = "";
@@ -35,7 +34,7 @@ function inicalizarSelectItens() {
 }
 
 
-//função responsável por encontrar e retornar o id de acordo com o json
+//função responsável por encontrar e retornar o id do item
 function pegarIdItem(nomeItem) {
     var idItem = 0;
 
@@ -48,7 +47,7 @@ function pegarIdItem(nomeItem) {
 
     return (idItem);
 }
-//Adiciona os dados no array e inibe adição de itens ja acrescentados, verificando tambem a consistencia dos dados inputados
+//função para adicionar Item na tabela e no array
 function adicionar() {
     var potencia = 0;
     var horas = 0;
@@ -58,15 +57,8 @@ function adicionar() {
     const mil = 1000;
     var numeroItem = 0;
     var nomeItem = "";
-
-    //R$ 07/06/2018
-    var tarifaCalculada = 0;
-    var tarifaconvencional = 0.58684;
-    var iluminacaopublica = 0.32277;//0.90961
-
     var id = 0;
     var jaFoiAdicionado = false;
-
 
     //pegando valor campos
     nomeItem = campoNomeItem.value;
@@ -75,7 +67,6 @@ function adicionar() {
     horas = Number(campoHoras.value);
     dias = Number(campoDias.value);
 
-
     //validações
     let ok = false;
     ok = verificarCampos();
@@ -83,8 +74,6 @@ function adicionar() {
     if (ok == true) {
 
         resultado = (quantidade * potencia * horas * dias) / mil;
-        //R$ 07/06/2018
-        tarifaCalculada = resultado * ( tarifaconvencional + iluminacaopublica);
 
         id = pegarIdItem(nomeItem);
 
@@ -92,21 +81,15 @@ function adicionar() {
         if (jaFoiAdicionado == false) {
 
             total = Number(total) + Number(resultado);
-                    //R$ 07/06/2018
-            tarifacao = Number(tarifacao) + Number(tarifaCalculada);
+
 
             itensAdicionados.push({
-                id: id,
                 nome: nomeItem,
                 quantidade: Number(quantidade),
                 potencia: Number(potencia),
                 horas: Number(horas),
                 dias: Number(dias),
                 gastoTotal: Number(resultado),
-
-                //R$ 07/06/2018
-                tarifacao: Number(tarifaCalculada),
-
             });
 
         } else {
@@ -115,12 +98,8 @@ function adicionar() {
         atualizarTabela();
         atualizarCampoResultado();
         limparCampos();
-
     }
 
-
-
-    //verifica se todos os dados estão conforme o esperado (ok true)
     function verificarCampos() {
         let ok = true;
 
@@ -166,12 +145,10 @@ function adicionar() {
             campoDias.style.borderColor = "initial";
         }
         return ok;
-    }   
+    }
 }
-
-
-//atualiza tabela com os itens do array disponibilizando para o usuario a leitura
-function atualizarTabela() {
+    //atualiza tabela com os itens do array
+    function atualizarTabela() {
     var tabela = document.getElementById('tabela');
     var corpoTabela = document.getElementById('corpo-tabela');
     var linhas = corpoTabela.rows.length;
@@ -187,19 +164,16 @@ function atualizarTabela() {
             var linhaTabela =
                 // selecionarLinha(qntLinhasTabela)
                 '<tr onclick="">' +
-                '<td>' + item.id + '</td>' +
                 '<td>' + item.nome + '</td>' +
                 '<td>' + item.quantidade + '</td>' +
                 '<td>' + item.potencia + "W" + '</td>' +
                 '<td>' + item.horas + '</td>' +
                 '<td>' + item.dias + '</td>' +
                 '<td>' + (item.gastoTotal.toFixed(2)) + " kWh" + '</td>' +
-                //R$ 07/06/2018
-                '<td>' + "R$ " + (item.tarifacao.toFixed(2)) + '</td>' +
                 '<td class="iconeExcluir" onclick="deletarLinha(' +
                 (tabela.rows.length - 1) + "," + item.id + "," +
                 item.quantidade + "," + item.potencia + "," + item.dias +
-                "," + item.horas + "," + item.gastoTotal + "," + item.tarifacao + ')">' +
+                "," + item.horas + "," + item.gastoTotal + ')">' +
                 '<span>' + '<img src="img/x.png" >' + '<span/>' + '</td>' +
                 '</tr>'
                 ;
@@ -209,10 +183,11 @@ function atualizarTabela() {
         tabela.style.display = 'none';
 
     }
+
 }
 
-//funçao para encontrar e Adicionar ou Remover item do array e atualizar variavel total
-function encontrarItem(op, id, qnt, gastoTotal, potencia, dias, horas) {
+    //funçao para encontrar e Adicionar ou Remover item do array e atualizar variavel total
+    function encontrarItem(op, id, qnt, gastoTotal, potencia, dias, horas) {
     var encontrado = false;
 
     for (let i = 0; i < itensAdicionados.length; i++) {
@@ -248,14 +223,7 @@ function atualizarCampoResultado() {
     campoResultado = document.getElementById('resultado');
     campoResultado.value = "";
     campoResultado.value += (Number(total).toFixed(2)) + " kWh";
-
-    //R$ 07/06/2018
-    campoTarifacao = document.getElementById('tarifacao');
-    campoTarifacao.value = "";
-    campoTarifacao.value += ("BRL " + Number(tarifacao).toFixed(2));
-
 }
-
 //função para preencher o campo de potencia qnd o usuário selecionar o item
 function preencherCampoPotencia() {
 
@@ -287,7 +255,6 @@ function deletarLinha(linha, id, qnt, potencia, dias, horas, gastoTotal) {
     atualizarCampoResultado();
 }
 
-//função para limpar os itens para novo registro e nova adição do usuario
 function limparCampos() {
     campoSelect.value = selecione;
     campoQuantidade.value = 1;

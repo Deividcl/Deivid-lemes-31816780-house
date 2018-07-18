@@ -1,65 +1,65 @@
 body#interface{
     background-color: #0B486B;
-    color: #CFF09E;
+    color: #032309;
     font-weight: bold;
     text-transform: uppercase;
-    margin-left: 9%;
+    height: 100%;
+    width: 100%;
 }
 
-
-#container-calculo{  
-    background-color: #;
+#container-calculo{
     border-radius: 15px;
-    position: absolute;
-    margin: 0px;
+    position: relative;
+    margin: 10px 40px 0px 45px;
+    display: flex;
+    flex-flow: column;
 }
 
-
-label.letra {
-    font-size: 12pt;
-    float: left;
-    text-align: center;
+h2#tit-prin {
+    margin-left: 8%;
+    font-size: 14pt;
+    color: #fff;
+    text-shadow: 1px 0px 5px black;
 }
 
 button#adc {
     background-color: #79BD9A;
     border-color: #79BD9A;
-    border-radius: 4px;
-    color: #000;
-    height: 35px;
-    margin-left: 30%;
+    color: #f4f4f5;
+    margin-left: 25%;
+    text-transform: uppercase;
 }
 
-table#tabela{
+.table-responsive {
+    overflow: none;
+    position: relative;
+    width: 100%;
+}
+
+table#tabela {
     background-color: #4eb294;
     text-align: center;
     display: none;
+
 }
 
 th.result, #corpo-tabela, tr {
     font-family: Arial, sans-serif;
-    font-size: 8pt;
+    font-size: 12pt;
     color: #0B486B;
     border: none;
-    margin: 0px;
-    padding: 1px;
-    height: 8%;
+    width: 100px;  
 }
 
 th.result {
     background-color: #0B486B;
     color: #fff;
+    width: 100px;
 }
+
 td,th{
+    width: 100px;
     padding: 5px 20px;
-
-}
-
-#horas, #dias {
-    width: 100%;
-    margin-top: 1px;
-
-    
 }
 
 thead{
@@ -81,4 +81,6 @@ form {
     display: flex;
     flex-flow: column;
     justify-content: space-between;
+    width: 100%;
+    height: 100%;
 }
